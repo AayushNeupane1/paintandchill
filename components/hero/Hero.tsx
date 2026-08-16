@@ -297,7 +297,7 @@ export default function Hero() {
       <section
         id="top"
         ref={wrapperRef}
-        className="relative"
+        className="relative italic"
         style={{ height: "600vh" }}
         aria-label="Paint & Chill hero"
       >
@@ -412,7 +412,6 @@ className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-
             <h2 className="font-display font-black leading-[0.95] text-canvas text-[10vw] sm:text-[6vw] lg:text-[4.2vw]">
               {heroCopy.finaleHeadline}
             </h2>
-          
             <p className="mt-3 font-body text-sm text-canvas/90 sm:text-base">
               {heroCopy.finaleSub}
             </p>

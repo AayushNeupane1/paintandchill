@@ -29,16 +29,16 @@ export const heroImages: HeroImage[] = [
     id: "guiding",
     src: "/images/session-04.jpg",
     alt: "A Paint & Chill artist gently guiding a participant's brushstroke during a Melbourne painting session",
-    mask: "/brushes/patch-01.png",
-    aspect: 1000 / 740,
+    mask: "/brushes/patch-05.png",
+    aspect: 1040 / 800,
     accent: "var(--coral)",
   },
   {
-    id: "outdoor-artwork",
+    id: "studio-session",
     src: "/images/session-02.jpg",
-    alt: "A finished expressive portrait painting surrounded by brushes and paint tubes",
-    mask: "/brushes/patch-02.png",
-    aspect: 760 / 980,
+    alt: "A full room of participants painting at easels during a Paint & Chill studio session in Melbourne",
+    mask: "/brushes/patch-01.png",
+    aspect: 1000 / 740,
     accent: "var(--blue)",
   },
   {
@@ -61,8 +61,8 @@ export const heroImages: HeroImage[] = [
     id: "group-class",
     src: "/images/session-06.jpg",
     alt: "Friends painting together at a Paint & Chill social art class in Melbourne",
-    mask: "/brushes/patch-05.png",
-    aspect: 1040 / 800,
+    mask: "/brushes/patch-02.png",
+    aspect: 760 / 980,
     accent: "var(--blue)",
   },
   {
@@ -85,8 +85,7 @@ export const brandLogo = "/brand/logo.png";
 
 export const heroCopy = {
   eyebrow: "PAINT & CHILL",
-  headlineLines: ["PAINT.", "CHILL."],
-  repeatHeadline: "REPEAT.",
+  headlineLines: ["PAINT.", "CHILL.", "CREATE."],
   finaleHeadline: "COME PAINT WITH US.",
   finaleSub: "Melbourne's creative painting experience.",
   sub: "Creative painting experiences, art sessions and private events in Melbourne.",

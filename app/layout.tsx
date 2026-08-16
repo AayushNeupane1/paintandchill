@@ -3,9 +3,19 @@ import "@fontsource/archivo/500.css";
 import "@fontsource/archivo/700.css";
 import "@fontsource/archivo/800.css";
 import "@fontsource/archivo/900.css";
+// Real italic faces. Without these the browser fakes italics by skewing the
+// roman, which looks noticeably worse at display sizes.
+import "@fontsource/archivo/700-italic.css";
+import "@fontsource/archivo/800-italic.css";
+import "@fontsource/archivo/900-italic.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/400-italic.css";
+import "@fontsource/inter/500-italic.css";
+import "@fontsource/inter/600-italic.css";
+import "@fontsource/inter/700-italic.css";
 import "@fontsource/caveat/600.css";
 import "./globals.css";
 
