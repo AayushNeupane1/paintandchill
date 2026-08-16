@@ -83,7 +83,7 @@ export default function HeroNav() {
           </a>
 
           <a
-            href="#book"
+            href="#sessions"
             data-cursor="book"
             className="rounded-full border border-current px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors hover:bg-canvas hover:text-ink sm:px-5"
           >

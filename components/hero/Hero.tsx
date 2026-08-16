@@ -408,14 +408,14 @@ export default function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="#book"
+                href="#sessions"
                 data-cursor="book"
                 className="rounded-full bg-ink px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-transform duration-300 hover:scale-[1.04]"
               >
                 {heroCopy.ctaPrimary}
               </a>
               <a
-                href="#experiences"
+                href="#sessions"
                 className="rounded-full border border-ink/25 px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-canvas"
               >
                 {heroCopy.ctaSecondary}
@@ -467,14 +467,14 @@ className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-
               className="relative flex flex-wrap items-center justify-center gap-3 sm:gap-4"
             >
               <a
-                href="#book"
+                href="#sessions"
                 data-cursor="book"
                 className="rounded-full bg-canvas px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-ink shadow-lg transition-transform duration-300 hover:scale-[1.04] sm:px-9"
               >
                 {heroCopy.ctaPrimary} →
               </a>
               <a
-                href="#experiences"
+                href="#sessions"
                 className="rounded-full border-2 border-canvas px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-colors duration-300 hover:bg-canvas hover:text-ink sm:px-9"
               >
                 {heroCopy.ctaSecondary}
