@@ -297,7 +297,7 @@ export default function Hero() {
       <section
         id="top"
         ref={wrapperRef}
-        className="relative italic"
+        className="relative"
         style={{ height: "600vh" }}
         aria-label="Paint & Chill hero"
       >
@@ -368,36 +368,55 @@ export default function Hero() {
             ref={headlineRef}
             className="absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center"
           >
-            <p className="font-body text-[11px] font-semibold tracking-[0.35em] text-ink/70">
+            <p className="font-display text-[10px] font-bold tracking-[0.42em] text-ink/55 sm:text-[11px]">
               {heroCopy.eyebrow}
             </p>
-            <h1 className="mt-4 font-display font-black leading-[0.92] tracking-tight text-[15vw] sm:text-[10vw] lg:text-[6.5vw]">
-              {heroCopy.headlineLines.map((line, i) => (
-                <span
-                  key={line}
-                  ref={(el) => {
-                    headlineLineRefs.current[i] = el;
-                  }}
-                  className="block"
-                >
-                  {line}
-                </span>
-              ))}
+            {/* Mixed type: modern grotesk for the hard words, the logo's own
+                brush script (gradient-filled) for the soft one. */}
+            <h1 className="mt-5 text-[16vw] sm:text-[11vw] lg:text-[6.8vw]">
+              <span
+                ref={(el) => {
+                  headlineLineRefs.current[0] = el;
+                }}
+                className="block font-display font-extrabold leading-[0.84] tracking-[-0.03em]"
+              >
+                PAINT.
+              </span>
+              {/* `w-fit` matters: background-clip:text paints across the
+                  element's box, so the span has to hug the word or the
+                  gradient stretches across the full line and only the middle
+                  colours show. */}
+              <span
+                ref={(el) => {
+                  headlineLineRefs.current[1] = el;
+                }}
+                className="paint-text mx-auto block w-fit font-script text-[1.02em] font-normal leading-[1.02]"
+              >
+                Chill.
+              </span>
+              <span
+                ref={(el) => {
+                  headlineLineRefs.current[2] = el;
+                }}
+                className="block font-display font-extrabold leading-[0.95] tracking-[-0.03em]"
+              >
+                CREATE.
+              </span>
             </h1>
-            <p className="mt-6 max-w-sm font-body text-sm text-ink/75 sm:max-w-md sm:text-base">
+            <p className="mt-7 max-w-[19rem] text-[15px] leading-relaxed text-ink/65 sm:max-w-md sm:text-base">
               {heroCopy.sub}
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
                 href="#book"
                 data-cursor="book"
-                className="rounded-full bg-ink px-7 py-3 text-xs font-bold tracking-[0.12em] text-canvas transition-transform hover:scale-[1.03]"
+                className="rounded-full bg-ink px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-transform duration-300 hover:scale-[1.04]"
               >
                 {heroCopy.ctaPrimary}
               </a>
               <a
                 href="#experiences"
-                className="rounded-full border border-ink/40 px-7 py-3 text-xs font-bold tracking-[0.12em] text-ink transition-colors hover:border-ink"
+                className="rounded-full border border-ink/25 px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-canvas"
               >
                 {heroCopy.ctaSecondary}
               </a>
@@ -409,10 +428,15 @@ export default function Hero() {
             ref={finaleRef}
 className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-center px-6 text-center sm:bottom-[28%]"
           >
-            <h2 className="font-display font-black leading-[0.95] text-canvas text-[10vw] sm:text-[6vw] lg:text-[4.2vw]">
-              {heroCopy.finaleHeadline}
+            <h2 className="leading-[0.95] text-canvas">
+              <span className="block font-display text-[9vw] font-extrabold tracking-[-0.03em] sm:text-[5.4vw] lg:text-[3.8vw]">
+                COME PAINT
+              </span>
+              <span className="block font-script text-[11vw] leading-[1.05] text-canvas sm:text-[6.4vw] lg:text-[4.6vw]">
+                with us.
+              </span>
             </h2>
-            <p className="mt-3 font-body text-sm text-canvas/90 sm:text-base">
+            <p className="mt-4 text-sm text-canvas/80 sm:text-base">
               {heroCopy.finaleSub}
             </p>
           </div>
@@ -445,13 +469,13 @@ className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-
               <a
                 href="#book"
                 data-cursor="book"
-                className="rounded-full bg-canvas px-7 py-3 text-xs font-bold tracking-[0.12em] text-ink shadow-sm transition-transform hover:scale-[1.04] sm:px-8"
+                className="rounded-full bg-canvas px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-ink shadow-lg transition-transform duration-300 hover:scale-[1.04] sm:px-9"
               >
                 {heroCopy.ctaPrimary} →
               </a>
               <a
                 href="#experiences"
-                className="rounded-full border-2 border-canvas px-7 py-3 text-xs font-bold tracking-[0.12em] text-canvas transition-colors hover:bg-canvas hover:text-ink sm:px-8"
+                className="rounded-full border-2 border-canvas px-8 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-colors duration-300 hover:bg-canvas hover:text-ink sm:px-9"
               >
                 {heroCopy.ctaSecondary}
               </a>
@@ -461,7 +485,7 @@ className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-
           {/* scroll cue */}
           <div
             ref={scrollCueRef}
-            className="absolute inset-x-0 bottom-6 z-20 flex flex-col items-center gap-2 text-[10px] font-semibold tracking-[0.3em] text-ink/50"
+            className="absolute inset-x-0 bottom-6 z-20 flex flex-col items-center gap-2 font-display text-[9px] font-bold tracking-[0.38em] text-ink/40"
           >
             <span>SCROLL</span>
             <span className="h-8 w-px animate-pulse bg-ink/30" />

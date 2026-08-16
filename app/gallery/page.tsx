@@ -35,13 +35,13 @@ export default function GalleryPage() {
               className="rounded-full"
               priority
             />
-            <span className="font-display text-sm font-extrabold tracking-[0.14em]">
+            <span className="font-display text-sm font-extrabold tracking-[0.16em]">
               {galleryCopy.eyebrow}
             </span>
           </Link>
           <Link
             href="/"
-            className="rounded-full border border-canvas/40 px-4 py-2 text-[11px] font-bold tracking-[0.12em] text-canvas transition-colors hover:bg-canvas hover:text-ink sm:px-5"
+            className="rounded-full border border-canvas/30 px-5 py-2.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-colors duration-300 hover:bg-canvas hover:text-ink"
           >
             ← BACK TO SITE
           </Link>

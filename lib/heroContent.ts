@@ -35,7 +35,7 @@ export const heroImages: HeroImage[] = [
   },
   {
     id: "studio-session",
-    src: "/images/session-02.jpg",
+    src: "/images/studio-session.jpg",
     alt: "A full room of participants painting at easels during a Paint & Chill studio session in Melbourne",
     mask: "/brushes/patch-01.png",
     aspect: 1000 / 740,

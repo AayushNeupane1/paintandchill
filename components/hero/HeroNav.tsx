@@ -13,7 +13,7 @@ const links = [
 
 export default function HeroNav() {
   return (
-    <header className="absolute inset-x-0 top-0 z-40 italic mix-blend-difference">
+    <header className="absolute inset-x-0 top-0 z-40 mix-blend-difference">
       <nav
         aria-label="Primary"
         className="flex items-center justify-between gap-4 px-5 py-5 text-canvas sm:px-8 sm:py-6"
@@ -27,12 +27,12 @@ export default function HeroNav() {
             className="rounded-full"
             priority
           />
-          <span className="font-display text-sm font-extrabold tracking-[0.14em]">
+          <span className="font-display text-sm font-extrabold tracking-[0.16em]">
             {heroCopy.eyebrow}
           </span>
         </a>
 
-        <ul className="hidden items-center gap-8 text-xs font-semibold tracking-[0.12em] lg:flex">
+        <ul className="hidden items-center gap-8 font-display text-[11px] font-bold tracking-[0.16em] lg:flex">
           {links.map((l) => (
             <li key={l.label}>
               <a
@@ -70,7 +70,7 @@ export default function HeroNav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Paint & Chill on WhatsApp"
-            className="inline-flex items-center gap-2 rounded-full border border-current px-3 py-2 text-[11px] font-bold tracking-[0.12em] transition-colors hover:bg-canvas hover:text-ink sm:px-4 sm:text-xs"
+            className="inline-flex items-center gap-2 rounded-full border border-current px-3 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors hover:bg-canvas hover:text-ink sm:px-4"
           >
             <svg
               viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ export default function HeroNav() {
           <a
             href="#book"
             data-cursor="book"
-            className="rounded-full border border-current px-4 py-2 text-[11px] font-bold tracking-[0.12em] transition-colors hover:bg-canvas hover:text-ink sm:px-5 sm:text-xs"
+            className="rounded-full border border-current px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors hover:bg-canvas hover:text-ink sm:px-5"
           >
             BOOK A SESSION
           </a>
