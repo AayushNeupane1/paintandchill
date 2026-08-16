@@ -2,58 +2,48 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type CursorMode = "default" | "view" | "book";
-
 /**
- * Subtle custom cursor for fine-pointer (desktop) devices only.
- * Updates via direct style mutation on mousemove (no persistent rAF loop),
- * so there is zero cost while the pointer is idle.
+ * A quiet dot cursor for fine-pointer devices.
+ *
+ * It swells slightly over anything clickable and carries no text label —
+ * labels ("BOOK →", "VIEW") competed with the real buttons and made the
+ * page feel cluttered.
+ *
+ * Position is written straight to `style.transform` on mousemove rather than
+ * held in React state, so hovering never triggers a re-render, and there is
+ * no persistent animation frame loop when the pointer is still.
  */
 export default function CustomCursor() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [mode, setMode] = useState<CursorMode>("default");
-  const [label, setLabel] = useState("");
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)");
-    // client-only feature detection; SSR can't know pointer capability, so
-    // this necessarily resolves one tick after mount.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setEnabled(fine.matches);
-    const onChange = () => setEnabled(fine.matches);
-    fine.addEventListener?.("change", onChange);
-    return () => fine.removeEventListener?.("change", onChange);
+    const mq = window.matchMedia("(pointer: fine)");
+    const sync = () => setEnabled(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   useEffect(() => {
     if (!enabled) return;
-
     document.body.classList.add("pc-cursor-active");
 
-    const handleMove = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       const el = wrapRef.current;
       if (!el) return;
       el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
 
-      const target = e.target as HTMLElement;
-      const viewEl = target.closest("[data-cursor='view']");
-      const bookEl = target.closest("[data-cursor='book']");
-      if (bookEl) {
-        setMode("book");
-        setLabel("BOOK →");
-      } else if (viewEl) {
-        setMode("view");
-        setLabel("VIEW");
-      } else {
-        setMode("default");
-        setLabel("");
-      }
+      const target = e.target as HTMLElement | null;
+      const interactive = !!target?.closest(
+        'a, button, [role="button"], input, select, textarea'
+      );
+      el.classList.toggle("pc-cursor--active", interactive);
     };
 
-    window.addEventListener("mousemove", handleMove, { passive: true });
+    window.addEventListener("mousemove", onMove, { passive: true });
     return () => {
-      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("mousemove", onMove);
       document.body.classList.remove("pc-cursor-active");
     };
   }, [enabled]);
@@ -61,8 +51,8 @@ export default function CustomCursor() {
   if (!enabled) return null;
 
   return (
-    <div ref={wrapRef} className={`pc-cursor pc-cursor--${mode}`} aria-hidden="true">
-      <div className="pc-cursor__dot">{label}</div>
+    <div ref={wrapRef} className="pc-cursor" aria-hidden="true">
+      <div className="pc-cursor__dot" />
     </div>
   );
 }

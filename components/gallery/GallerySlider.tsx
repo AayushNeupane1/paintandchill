@@ -163,7 +163,6 @@ export default function GallerySlider() {
               href={buyLink(current)}
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor="book"
               className="rounded-full bg-canvas px-7 py-3.5 font-display text-[11px] font-bold tracking-[0.16em] text-ink shadow-lg transition-transform duration-300 hover:scale-[1.04]"
             >
               BUY ON WHATSAPP →

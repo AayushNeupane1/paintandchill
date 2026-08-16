@@ -13,10 +13,10 @@ const links = [
 
 export default function HeroNav() {
   return (
-    <header className="absolute inset-x-0 top-0 z-40 mix-blend-difference">
+    <header className="absolute inset-x-0 top-0 z-40">
       <nav
         aria-label="Primary"
-        className="flex items-center justify-between gap-4 px-5 py-5 text-canvas sm:px-8 sm:py-6"
+        className="flex items-center justify-between gap-4 px-5 py-5 text-ink sm:px-8 sm:py-6"
       >
         <a href="#top" className="flex items-center gap-2 shrink-0">
           <Image
@@ -37,7 +37,7 @@ export default function HeroNav() {
             <li key={l.label}>
               <a
                 href={l.href}
-                className="opacity-90 transition-opacity hover:opacity-100"
+                className="nav-link opacity-80 transition-opacity hover:opacity-100"
               >
                 {l.label}
               </a>
@@ -46,7 +46,7 @@ export default function HeroNav() {
           <li>
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-1 opacity-90 transition-opacity hover:opacity-100"
+              className="nav-link inline-flex items-center gap-1 opacity-80 transition-opacity hover:opacity-100"
             >
               ARTISTS <span aria-hidden="true">↗</span>
             </Link>
@@ -54,7 +54,7 @@ export default function HeroNav() {
           <li>
             <a
               href="#contact"
-              className="opacity-90 transition-opacity hover:opacity-100"
+              className="nav-link opacity-80 transition-opacity hover:opacity-100"
             >
               CONTACT
             </a>
@@ -70,7 +70,7 @@ export default function HeroNav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Paint & Chill on WhatsApp"
-            className="inline-flex items-center gap-2 rounded-full border border-current px-3 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors hover:bg-canvas hover:text-ink sm:px-4"
+            className="inline-flex items-center gap-2 rounded-full border border-ink/25 px-3 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors duration-300 hover:bg-ink hover:text-canvas sm:px-4"
           >
             <svg
               viewBox="0 0 24 24"
@@ -84,8 +84,7 @@ export default function HeroNav() {
 
           <a
             href="#sessions"
-            data-cursor="book"
-            className="rounded-full border border-current px-4 py-2 font-display text-[11px] font-bold tracking-[0.16em] transition-colors hover:bg-canvas hover:text-ink sm:px-5"
+            className="rounded-full bg-ink px-5 py-2.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-transform duration-300 hover:-translate-y-0.5 sm:px-6"
           >
             BOOK A SESSION
           </a>

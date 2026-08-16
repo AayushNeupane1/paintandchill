@@ -60,7 +60,6 @@ export default function BrushImage({
       ref={refs.container}
       className="hero-reveal absolute will-change-transform"
       style={{ aspectRatio: String(image.aspect), ...position }}
-      data-cursor="view"
     >
       <div
         // eslint-disable-next-line react-hooks/refs -- see note above

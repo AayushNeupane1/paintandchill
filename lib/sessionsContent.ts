@@ -30,8 +30,10 @@ export interface SessionOption {
   groupOptions: string[];
   image: string;
   imageAlt: string;
-  /** Brand paint colour for this session. */
+  /** Full-brightness brand colour — fills, bars, chips. */
   accent: string;
+  /** Darkened variant safe to use as TEXT on ivory. */
+  accentInk: string;
 }
 
 export const sessions: SessionOption[] = [
@@ -60,6 +62,7 @@ export const sessions: SessionOption[] = [
     imageAlt:
       "A Paint & Chill artist sharing a laugh with a smiling resident during an aged care painting session",
     accent: "var(--pc-orange)",
+    accentInk: "var(--pc-orange-ink)",
   },
   {
     id: "the-big-table",
@@ -86,6 +89,7 @@ export const sessions: SessionOption[] = [
     imageAlt:
       "A long table of friends painting together at a private Paint & Chill gathering in Melbourne",
     accent: "var(--pc-pink)",
+    accentInk: "var(--pc-pink-ink)",
   },
   {
     id: "off-the-clock",
@@ -112,6 +116,7 @@ export const sessions: SessionOption[] = [
     imageAlt:
       "A room of easels set up for a corporate Paint & Chill team painting session in Melbourne",
     accent: "var(--pc-blue)",
+    accentInk: "var(--pc-blue-ink)",
   },
 ];
 
