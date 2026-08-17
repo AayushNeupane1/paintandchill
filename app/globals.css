@@ -52,7 +52,17 @@
 }
 
 html {
+  /* Deliberately NOT smooth: the hero is a 600vh scroll timeline, and
+     smooth-scrolling a jump that long animates through the whole animation
+     and feels broken. An instant jump is predictable. */
   scroll-behavior: auto;
+}
+
+/* The nav is fixed, so anchor targets must clear it or their headings land
+   underneath it. */
+section[id],
+[id]:target {
+  scroll-margin-top: 84px;
 }
 
 body {
@@ -119,7 +129,11 @@ body {
   transition: transform 0.42s cubic-bezier(0.2, 0.85, 0.2, 1);
 }
 .nav-link:hover::after,
-.nav-link:focus-visible::after { transform: scaleX(1); }
+.nav-link:focus-visible::after,
+.nav-link[aria-current="true"]::after { transform: scaleX(1); }
+
+/* The section you are currently looking at stays marked. */
+.nav-link[aria-current="true"] { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-link::after { transition: none; }
@@ -244,7 +258,11 @@ body {
   transition: transform 0.42s cubic-bezier(0.2, 0.85, 0.2, 1);
 }
 .nav-link:hover::after,
-.nav-link:focus-visible::after { transform: scaleX(1); }
+.nav-link:focus-visible::after,
+.nav-link[aria-current="true"]::after { transform: scaleX(1); }
+
+/* The section you are currently looking at stays marked. */
+.nav-link[aria-current="true"] { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .nav-link::after { transition: none; }
