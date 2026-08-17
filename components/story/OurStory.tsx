@@ -16,7 +16,13 @@ import { story } from "@/lib/storyContent";
  *     get a paused first frame and real controls instead. Looping motion is
  *     exactly what that setting exists to stop.
  */
-export default function OurStory() {
+/**
+ * Section of the landing page (h2), or the whole /story page (h1).
+ * See the note in Sessions — a page needs exactly one h1.
+ */
+export default function OurStory({ as = "h2" }: { as?: "h1" | "h2" }) {
+  const Heading = as;
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
@@ -103,14 +109,14 @@ export default function OurStory() {
             {story.eyebrow}
           </p>
 
-          <h2 className="mt-5 text-ink">
+          <Heading className="mt-5 text-ink">
             <span className="block font-display text-[9vw] font-extrabold leading-[0.9] tracking-[-0.03em] sm:text-[3.4vw]">
               {story.titleLead}
             </span>
             <span className="paint-text block w-fit font-script text-[11vw] leading-[1.05] sm:text-[4vw]">
               {story.titleScript}
             </span>
-          </h2>
+          </Heading>
 
           <p className="mt-7 max-w-xl font-script text-2xl leading-snug text-ink/80 sm:text-[1.7rem]">
             {story.lead}

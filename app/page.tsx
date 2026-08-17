@@ -1,24 +1,18 @@
 import Hero from "@/components/hero/Hero";
-import CustomCursor from "@/components/hero/CustomCursor";
 import Sessions from "@/components/sessions/Sessions";
 import OurStory from "@/components/story/OurStory";
 import { heroCopy } from "@/lib/heroContent";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <CustomCursor />
       <Hero />
 
-      {/* SEO supporting copy — the page never relies on animation alone to
-          say what Paint & Chill is. */}
+      {/* Supporting copy so the page never relies on animation alone to say
+          what Paint & Chill is. */}
       <p className="sr-only">{heroCopy.seoIntro}</p>
 
       <Sessions />
-
-      {/* Story sits after the offer: people ready to book can act first,
-          and this builds trust for everyone still deciding. Swap the two
-          lines to reverse that order. */}
       <OurStory />
     </>
   );

@@ -5,7 +5,6 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BrushImage from "./BrushImage";
-import HeroNav from "./HeroNav";
 import { ctaBandMask, heroCopy, heroImages } from "@/lib/heroContent";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -292,9 +291,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <>
-      <HeroNav />
-      <section
+    <section
         id="top"
         ref={wrapperRef}
         className="relative"
@@ -489,7 +486,6 @@ className="hero-hidden absolute inset-x-0 bottom-[30%] z-30 flex flex-col items-
             <span className="h-8 w-px animate-pulse bg-ink/30" />
           </div>
         </div>
-      </section>
-    </>
+    </section>
   );
 }

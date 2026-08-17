@@ -1,61 +1,71 @@
-# Paint & Chill — Hero Section
+# Paint & Chill
 
-A scroll-driven hero for Paint & Chill (Melbourne). Built with Next.js (App
-Router), TypeScript, Tailwind CSS v4, and GSAP + ScrollTrigger. This build
-covers **only the hero section**, per spec — no other pages/sections exist
-yet beyond a minimal transition stub.
+Marketing site for Paint & Chill — creative painting experiences, art sessions
+and private painting events in Melbourne.
+
+## Stack
+
+- **Next.js 16** (App Router) · **React 19** · **TypeScript**
+- **Tailwind CSS v4** — configured in CSS (`app/globals.css`), no `tailwind.config.js`
+- **GSAP + ScrollTrigger + Flip** — hero scroll timeline and gallery transitions
+- Self-hosted fonts via `@fontsource` (no runtime call to Google Fonts)
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint     # eslint, zero warnings allowed
 ```
 
-Open http://localhost:3000.
+## Routes
 
-```bash
-npm run build && npm run start   # production build
-npm run lint                     # eslint
-```
+| Route | Purpose |
+|---|---|
+| `/` | Landing page — hero, sessions, story |
+| `/sessions` | The three session formats in full |
+| `/gallery` | Artwork gallery, enquire/buy over WhatsApp |
+| `/story` | Founder story and studio video |
+| `/contact` | WhatsApp-first contact page |
+| `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` | Generated from `lib/siteConfig.ts` |
 
-## Project layout
+## Where the content lives
 
-- `app/page.tsx` — renders the hero + a minimal stub for the next section
-  ("The Birth of Paint & Chill" — not built yet, intentionally).
-- `app/layout.tsx` — fonts (self-hosted via `@fontsource`, no external
-  network calls at build/runtime) and SEO metadata.
-- `components/hero/Hero.tsx` — the main orchestrator: layout, copy, and the
-  GSAP ScrollTrigger timeline (5 stages, see comments in-file).
-- `components/hero/BrushImage.tsx` — a single photograph revealed through an
-  organic brush-stroke mask.
-- `components/hero/HeroNav.tsx` — minimal nav (mix-blend-difference so it
-  stays legible over any background).
-- `components/hero/CustomCursor.tsx` — subtle custom cursor, desktop only.
-- `lib/heroContent.ts` — **all hero copy and the image config array**.
-- `public/images/` — session photography.
-- `public/brushes/` — procedurally generated brush-stroke mask textures
-  (transparent PNGs) used for the organic photo reveals and the final
-  transition wipe.
-- `public/brand/` — the Paint & Chill logo (transparent PNG).
+All copy and data is separated from the components. To change the site's
+words, images or offerings you should not need to touch a component.
 
-## Swapping in new photography
+| File | Controls |
+|---|---|
+| `lib/siteConfig.ts` | Business name, domain, navigation, SEO defaults |
+| `lib/heroContent.ts` | Hero copy, photographs, brush masks |
+| `lib/sessionsContent.ts` | The three sessions: copy, inclusions, pricing buckets |
+| `lib/galleryContent.ts` | Artworks: titles, media, prices |
+| `lib/storyContent.ts` | Our Story copy and video |
+| `lib/whatsapp.ts` | WhatsApp number and message builders |
 
-Edit `lib/heroContent.ts` — update the `src` (and `alt`) on any entry in
-`heroImages`, or drop new files into `public/images/` with the same names.
-No component code needs to change.
+## Before you deploy
 
-## Notes
+1. **Set the domain.** `siteConfig.url` drives canonical URLs and the sitemap.
+   Either edit it or set `NEXT_PUBLIC_SITE_URL` in the Vercel dashboard.
+2. **Check the session copy.** Durations, inclusions and the insurance wording
+   in `lib/sessionsContent.ts` are drafts and need verifying.
+3. **Check artwork titles and prices** in `lib/galleryContent.ts`.
 
-- Reduced motion (`prefers-reduced-motion: reduce`) disables the scroll
-  choreography entirely: all photographs and copy are shown in their normal,
-  static positions, fully accessible.
-- Mobile (`< 1024px`) uses a lighter version of the same timeline — fewer
-  simultaneous images, no separate position table needed since the layout is
-  viewport-relative.
-- Pinning uses native `position: sticky` (not GSAP's own pin mechanism);
-  ScrollTrigger only reads scroll progress against the tall wrapper section
-  and scrubs the timeline.
-- Brush textures are procedurally generated (not photographed brush assets),
-  since none were supplied. They're transparent PNGs, so they're a drop-in
-  swap in `public/brushes/` for real photographed brush strokes later.
+## Deploying to Vercel
+
+Import the repository, accept the detected Next.js defaults, and set
+`NEXT_PUBLIC_SITE_URL` to the production domain. No other configuration
+is required — images, fonts and the story video are all served from `public/`.
+
+## Conventions
+
+- Content is data, components are presentation. New content goes in `lib/`.
+- Components are server components unless they need state, effects or
+  browser APIs — those carry `"use client"`.
+- Buttons and nav links use the shared `.btn` / `.nav-link` classes in
+  `globals.css` rather than per-instance utility strings, so styling cannot
+  drift between sections.
+- Animation respects `prefers-reduced-motion` throughout; the reduced path is
+  a genuine static alternative, not a faster animation.

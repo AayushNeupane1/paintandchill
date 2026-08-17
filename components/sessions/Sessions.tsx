@@ -9,7 +9,15 @@ import { tornEdgeMask } from "@/lib/heroContent";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Sessions() {
+/**
+ * Renders as a section of the landing page (h2) or as the whole /sessions
+ * page (h1). A page must have exactly one h1, and a landing page already
+ * spends its h1 on the hero — so the level has to be caller-controlled
+ * rather than hard-coded.
+ */
+export default function Sessions({ as = "h2" }: { as?: "h1" | "h2" }) {
+  const Heading = as;
+
   const rootRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -65,14 +73,14 @@ export default function Sessions() {
           <p className="font-display text-[10px] font-bold tracking-[0.42em] text-ink/45">
             {sessionsCopy.eyebrow}
           </p>
-          <h2 className="mt-5 text-ink">
+          <Heading className="mt-5 text-ink">
             <span className="block font-display text-[10vw] font-extrabold leading-[0.9] tracking-[-0.03em] sm:text-[3.6vw]">
               {sessionsCopy.titleLead}
             </span>
             <span className="paint-text block w-fit font-script text-[12vw] leading-[1.05] sm:text-[4.2vw]">
               {sessionsCopy.titleScript}
             </span>
-          </h2>
+          </Heading>
           <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink/65 sm:text-base">
             {sessionsCopy.intro}
           </p>

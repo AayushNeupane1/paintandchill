@@ -82,7 +82,7 @@ export default function GallerySlider() {
 
   return (
     <section
-      className="relative h-svh w-full overflow-hidden bg-[#0b0a0a]"
+      className="relative h-svh w-full overflow-hidden bg-[#0b0a0a] pt-16"
       aria-roledescription="carousel"
       aria-label="Artwork gallery"
     >

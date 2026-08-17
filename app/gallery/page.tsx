@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import GallerySlider from "@/components/gallery/GallerySlider";
 import { artworks, galleryCopy } from "@/lib/galleryContent";
-import { brandLogo } from "@/lib/heroContent";
+import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
-  title: "Gallery — Original Paintings & Prints | Paint & Chill Melbourne",
+  title: "Gallery",
   description:
     "Browse original paintings and prints from Paint & Chill sessions and our resident Melbourne artists. Enquire or buy directly over WhatsApp.",
+  alternates: { canonical: "/gallery" },
   openGraph: {
+    url: `${siteConfig.url}/gallery`,
     title: "Paint & Chill Gallery — Original Art from Melbourne",
     description:
       "Original paintings and prints available to purchase directly from Paint & Chill.",
@@ -21,32 +21,6 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-40">
-        <nav
-          aria-label="Gallery"
-          className="flex items-center justify-between gap-4 px-5 py-5 text-canvas sm:px-8"
-        >
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src={brandLogo}
-              alt="Paint & Chill logo"
-              width={34}
-              height={34}
-              className="rounded-full"
-              priority
-            />
-            <span className="font-display text-sm font-extrabold tracking-[0.16em]">
-              {galleryCopy.eyebrow}
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="rounded-full border border-canvas/30 px-5 py-2.5 font-display text-[11px] font-bold tracking-[0.16em] text-canvas transition-colors duration-300 hover:bg-canvas hover:text-ink"
-          >
-            ← BACK TO SITE
-          </Link>
-        </nav>
-      </header>
 
       {/* One meaningful H1 for the page, kept visually minimal so the
           artwork leads. Crawlers still get a descriptive heading. */}
